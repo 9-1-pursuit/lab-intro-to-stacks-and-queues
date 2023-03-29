@@ -47,13 +47,34 @@ sort - sort the stack into ascending order. CHALLENGE only use stacks to achieve
     return !this.top
  }
 
+ function findMin(){
+    let min = 0
+    let current = this.top
+    while(current){
+        if(current.data < min){
+            min = current.data
+        }
+        current = current.next
+    }
+    return min
+ }
+
+ function peek(){
+    const val = this.isEmpty()
+    return val ? "stack is empty" : this.top
+ }
+
+ function sort(){
+    
+ }
+
 
 module.exports = {
     push,
     size, 
     pop,
     isEmpty,
-    // findMin,
-    // peek,
+    findMin,
+    peek,
     // sort
 }
