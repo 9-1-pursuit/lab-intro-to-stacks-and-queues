@@ -36,14 +36,47 @@ class Node {
     this.size ++
   }
 
+  function dequeue(){
+    const currentFirst = this.first
+    const next = this.first.next
+
+    this.first = next
+    this.size--
+    
+    return currentFirst.data
+  }
+
+  function isEmpty(){
+    return !this.first 
+}
+
+function peek(){
+    return this.first
+}
+
+function getLast(){
+    return this.last
+}
+
+function findMax(){
+    let max = 0
+    let current = this.first
+    while(current){
+        if(current.data > max){
+            max = current.data
+        }
+        current = current.next
+    }
+    return max
+}
 
 
 module.exports = {
     count,
-    // dequeue,
+    dequeue,
     enqueue,
-    // findMax,
-    // getLast,
-    // isEmptyQueue : isEmpty,
-    // peekQueue: peek,
+    findMax,
+    getLast,
+    isEmptyQueue : isEmpty,
+    peekQueue: peek,
 }

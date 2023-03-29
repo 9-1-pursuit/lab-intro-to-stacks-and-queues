@@ -71,7 +71,7 @@ class Node {
                 // console.log('followingNode', following)
                 big.next = following
                 next.next = big
-                console.log(inspect(this.top,{ colors: true, depth: 12 }))
+                // console.log(inspect(this.top,{ colors: true, depth: 12 }))
                 
             }
                 current = next
@@ -84,7 +84,7 @@ class Node {
             }
             current = current.next 
         }
-        console.log(inspect(this.top,{ colors: true, depth: 12 }))
+        // console.log(inspect(this.top,{ colors: true, depth: 12 }))
     }
  }
 

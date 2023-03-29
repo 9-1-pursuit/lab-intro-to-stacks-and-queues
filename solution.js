@@ -18,7 +18,6 @@ const {
   isEmptyQueue,
   peekQueue,
 } = require("./Queue-Functions.js");
-const { get } = require("http");
 
 class Node {
   constructor(data, next = null){
