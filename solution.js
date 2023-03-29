@@ -99,6 +99,8 @@ for (let i = 0; i < words.length; i++) {
   wordStack.push(words[i]);
 }
 
+console.log(wordStack.size());
+
 const wordQueue = new Queue();
 
 module.exports = {
