@@ -1,4 +1,4 @@
-// const { Node, Stack, Queue } = require("./solution.js");
+const { inspect } = require("util");
 
 class Node {
     constructor(data, next = null){
@@ -12,14 +12,7 @@ class Node {
       this.top = top
     }
   }
-  /* 
 
-pop
-isEmpty check if list is empty
-findMin data value
-peek top node
-sort - sort the stack into ascending order. CHALLENGE only use stacks to achieve this (no arrays or objects etc.)
-  */
  function push(data){
     const newStack = new Node(data)
     newStack.next = this.top
@@ -65,8 +58,37 @@ sort - sort the stack into ascending order. CHALLENGE only use stacks to achieve
  }
 
  function sort(){
-    
+    let current = this.top
+    let next= this.top
+    while(current){
+        if(current.next){
+           next = current.next
+            if(current.data > next.data){
+                const small = next
+                const big = current
+                
+                const following = small.next
+                // console.log('followingNode', following)
+                big.next = following
+                next.next = big
+                console.log(inspect(this.top,{ colors: true, depth: 12 }))
+                
+            }
+                current = next
+        
+        }
+        else {
+            if(next.data > current.data){
+                current.next = next
+                next.next = null
+            }
+            current = current.next 
+        }
+        console.log(inspect(this.top,{ colors: true, depth: 12 }))
+    }
  }
+
+
 
 
 module.exports = {
@@ -76,5 +98,5 @@ module.exports = {
     isEmpty,
     findMin,
     peek,
-    // sort
+    sort
 }

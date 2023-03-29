@@ -9,6 +9,16 @@ const {
   peek,
   sort
 } = require("./Stack-Functions.js")
+const {
+  count,
+  dequeue,
+  enqueue,
+  findMax,
+  getLast,
+  isEmptyQueue,
+  peekQueue,
+} = require("./Queue-Functions.js");
+const { get } = require("http");
 
 class Node {
   constructor(data, next = null){
@@ -34,9 +44,18 @@ class Queue {
   constructor(first = null, last = null){
     this.first = first
     this.last = last
-    this.size = 0
+    this.count = count
+    this.size = this.count()
+    this.enqueue = enqueue
+    this.dequeue = dequeue
+    this.findMax = findMax
+    this.getLast = getLast
+    this.isEmpty = isEmptyQueue
+    this.peek = peekQueue
   }
 }
+
+
 
 wordStack = new Stack();
 for (let word of words) {
@@ -46,7 +65,8 @@ numStack = new Stack();
 for (let num of nums) {
   numStack.push(num);
 }
-console.log(inspect(wordStack,{ colors: true, depth: 12 }))
+// numStack.sort()
+// console.log(inspect(numStack,{ colors: true, depth: 12 }))
 
 module.exports = {
   Node,
