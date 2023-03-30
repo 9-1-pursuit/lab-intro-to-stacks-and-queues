@@ -61,11 +61,11 @@ class Stack {
   }
 
   toAarr() {
-    let temp = this.top;
+    let node = this.top;
     let arr = [];
-    while (temp) {
-      arr.push(temp.data);
-      temp = temp.next;
+    while (node) {
+      arr.push(node.data);
+      node = node.next;
     }
     return arr;
   }
