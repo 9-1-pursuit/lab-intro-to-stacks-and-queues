@@ -71,12 +71,12 @@ class Stack {
   }
 
   sort() {
-    let stackArr = this.toAarr();
-    stackArr.sort();
+    let arr = this.toAarr();
+    arr.sort();
     this.top = null;
 
-    for (let i = stackArr.length - 1; i >= 0; i--) {
-      this.push(stackArr[i]);
+    for (let i = arr.length - 1; i >= 0; i--) {
+      this.push(arr[i]);
     }
   }
 }
