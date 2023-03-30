@@ -37,6 +37,7 @@ class Stack {
     this.peek = peek
     this.sort = sort
   }
+
 }
 
 class Queue {
@@ -52,6 +53,7 @@ class Queue {
     this.isEmpty = isEmptyQueue
     this.peek = peekQueue
   }
+  
 }
 
 
@@ -64,7 +66,7 @@ numStack = new Stack();
 for (let num of nums) {
   numStack.push(num);
 }
-// numStack.sort()
+console.log(numStack.sort())
 // console.log(inspect(numStack,{ colors: true, depth: 12 }))
 
 module.exports = {
