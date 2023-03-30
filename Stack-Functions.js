@@ -254,11 +254,9 @@ The sorted numbers are in tmpStack
 
 function sort(){
     const newStack = new Stack()
-    let thisTop = this.pop()
+    const thisTop = this.pop()
     // new stack is empty add the top of this stack to get started
     newStack.push(thisTop.data)
-
-    
 
     while(!this.isEmpty()){
         // will be passing nodes back and forth so while this stack isn't depleted, remove top node for comparison with newStack's top node

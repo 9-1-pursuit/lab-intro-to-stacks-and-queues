@@ -37,7 +37,6 @@ class Stack {
     this.peek = peek
     this.sort = sort
   }
-
 }
 
 class Queue {
@@ -53,21 +52,8 @@ class Queue {
     this.isEmpty = isEmptyQueue
     this.peek = peekQueue
   }
-  
 }
 
-
-
-wordStack = new Stack();
-for (let word of words) {
-  wordStack.push(word);
-}
-numStack = new Stack();
-for (let num of nums) {
-  numStack.push(num);
-}
-console.log(numStack.sort())
-// console.log(inspect(numStack,{ colors: true, depth: 12 }))
 
 module.exports = {
   Node,
