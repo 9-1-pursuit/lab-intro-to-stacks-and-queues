@@ -69,10 +69,22 @@ class Stack {
       // this.top = stack.top;
       // Empty the stack into an array
       
+        let val = [];
+    
+        let newItem = this.top;
+    
+        while (newItem) {
+          val.push(newItem.data);
+          newItem = newItem.next;
+        }
+        val.sort();
+        this.top.data = val[0];
+        return newItem;
+      }
 
     }
  
-  }
+  
 
 
 class Queue {
