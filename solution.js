@@ -57,24 +57,54 @@ class Stack {
     }
   }
   sort() {
-    let current = this.top;
-    const sorted = new Stack();
-    while (current) {
-      if (sorted.isEmpty()) {
-        sorted.top = new Node(current.data);
-      } else {
-        let currentSorted = sorted.top;
+    // working on non array method
+      let current = this.top;
+      const sorted = new Stack();
+      while (current) {
 
-        while (currentSorted.next) {
-
-          currentSorted = currentSorted.next
+        if (sorted.isEmpty()) {
+          sorted.top = new Node(current.data);
+        } else {
+          let currentSorted = sorted.top;
+          let added = false;
+          while (currentSorted.next && !added) {
+            console.log(currentSorted.data, current.data)
+            if (currentSorted.data > current.data) {
+              const newNext = currentSorted;
+              currentSorted = new Node(current.data);
+              console.log(newNext)
+              currentSorted.next = newNext;
+              added = true;
+            }
+            currentSorted = currentSorted.next;
+          }
+          if (!added) {
+            currentSorted.next = new Node(current.data);
+          }
         }
-        currentSorted.next = new Node(current.data)
+        current = current.next;
       }
-      current = current.next;
+      return sorted;
     }
-    return sorted;
-  }
+
+    // method using an array
+    // if (this.top === null) {
+    //   throw new Error("The stack is empty");
+    // }
+    // const arr = [];
+    // let current = this.top;
+    // while (current) {
+    //   arr.push(current.data);
+    //   current = current.next;
+    // }
+    // arr.sort();
+    // console.log(arr)
+    // let sorted = new Stack()
+    // for(let item of arr){
+    //   sorted.push(item)
+    // }
+    // return sorted;
+  // }
 }
 
 class Queue {
@@ -148,7 +178,7 @@ for (let word of words) {
   wordStack2.push(word);
 }
 numStack2 = new Stack();
-for (let num of nums) {
+for (let num of [10, 9, 8, 6, 7, 5, 4, 3]) {
   numStack2.push(num);
 }
 
