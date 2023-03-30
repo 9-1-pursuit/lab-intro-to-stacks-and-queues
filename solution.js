@@ -58,10 +58,10 @@ class Queue {
 class Stack {
   constructor(top = null) {
     this.top = top;
-    this.size = 0;
+    this.sizer = 0;
   }
   size() {
-    return this.size;
+    return this.sizer;
   }
   isEmpty() {
     return this.top === null;
@@ -76,7 +76,7 @@ class Stack {
     newItem.next = this.top;
     // new top will ne the newItem node we created
     this.top = newItem;
-    this.size++;
+    this.sizer++;
   }
   pop() {
     if (this.top == null) {
@@ -86,7 +86,7 @@ class Stack {
     if (item) {
       let newItem = item.next;
       this.top = newItem;
-      this.size--;
+      this.sizer--;
       //return the popped off item
 
       return item;
@@ -98,8 +98,6 @@ const wordStack = new Stack();
 for (let i = 0; i < words.length; i++) {
   wordStack.push(words[i]);
 }
-
-console.log(wordStack.size());
 
 const wordQueue = new Queue();
 
