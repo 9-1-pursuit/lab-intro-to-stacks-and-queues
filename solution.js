@@ -57,10 +57,23 @@ class Stack {
     }
   }
   sort() {
-    // let current = this.head;
-    // const sorted = new Stack(current)
-    // if(currentHead.data > currentNext.data){
-    // }
+    let current = this.top;
+    const sorted = new Stack();
+    while (current) {
+      if (sorted.isEmpty()) {
+        sorted.top = new Node(current.data);
+      } else {
+        let currentSorted = sorted.top;
+
+        while (currentSorted.next) {
+
+          currentSorted = currentSorted.next
+        }
+        currentSorted.next = new Node(current.data)
+      }
+      current = current.next;
+    }
+    return sorted;
   }
 }
 
@@ -128,6 +141,25 @@ class Queue {
     return this.max;
   }
 }
+
+let wordStack2, numStack2;
+wordStack2 = new Stack();
+for (let word of words) {
+  wordStack2.push(word);
+}
+numStack2 = new Stack();
+for (let num of nums) {
+  numStack2.push(num);
+}
+
+// console.log(wordStack2);
+// console.log(numStack2);
+// console.log(wordStack2.sort());
+
+console.log(
+  inspect(numStack2.sort(), { showHidden: true, colors: true, depth: 12 })
+);
+// console.log(numStack2.sort());
 
 module.exports = {
   Node,
