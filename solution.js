@@ -51,6 +51,29 @@ class Stack {
     }
     return current;
   }
+
+  sort() {
+    if (this.top === null) {
+      return;
+    }
+
+    const newStack = new Stack();
+    let currNode;
+
+    while (!this.isEmpty()) {
+      currNode = this.pop();
+
+      while (!newStack.isEmpty() && newStack.peek().data > currNode.data) {
+        this.push(newStack.pop().data);
+      }
+
+      newStack.push(currNode.data);
+    }
+
+    while (!newStack.isEmpty()) {
+      this.push(newStack.pop().data);
+    }
+  }
   peek() {
     if (this.top == null) {
       throw new Error('The stack is empty');
