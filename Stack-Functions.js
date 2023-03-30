@@ -273,9 +273,10 @@ function sort(){
             }
         }
         newStack.push(thisNextTop.data)
+        // still in parent while loop 
         // console.log(newStack)
     }
-    // once this stack is empty, unload 'descending' ordered nodes from newStack back into this stack
+    // once this stack is empty (parent while loop complete), unload 'descending' ordered nodes from newStack back into this stack -> pancake, so newstack top is ten = this Stack tail
     while(!newStack.isEmpty()){
         let newStackTop = newStack.pop()
         this.push(newStackTop.data)
