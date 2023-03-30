@@ -27,6 +27,9 @@ class Stack {
     return count;
   }
   pop() {
+    if (this.top === null) {
+      throw new Error("The stack is empty");
+    }
     const popItem = this.top;
     this.top = this.top.next;
     return popItem;
@@ -35,6 +38,9 @@ class Stack {
     return !this.top;
   }
   findMin() {
+    if (this.top === null) {
+      throw new Error("The stack is empty");
+    }
     const arr = [];
     let current = this.top;
     while (current) {
@@ -44,9 +50,17 @@ class Stack {
     return Math.min(...arr);
   }
   peek() {
-    if(this.top){
+    if (this.top !== null) {
       return this.top;
+    } else {
+      throw new Error("The stack is empty");
     }
+  }
+  sort() {
+    // let current = this.head;
+    // const sorted = new Stack(current)
+    // if(currentHead.data > currentNext.data){
+    // }
   }
 }
 
@@ -56,6 +70,62 @@ class Queue {
     this.last = null;
     this.size = 0;
     this.max = null;
+  }
+  enqueue(data) {
+    const node = new Node(data);
+    if (this.size === 0) {
+      this.first = node;
+    } else {
+      this.last.next = node;
+    }
+    this.last = node;
+    this.size++;
+    if (this.max < node.data) {
+      this.max = node.data;
+    }
+  }
+  dequeue() {
+    if (this.size === 0) {
+      throw new Error("The queue is empty");
+    }
+    const removed = this.first.data;
+    this.first = this.first.next;
+    this.size--;
+    if (removed === this.max) {
+      this.max = this.first.data;
+      let current = this.first;
+      while (current) {
+        if (this.max < current.data) {
+          this.max = current.data;
+        }
+        current = current.next;
+      }
+    }
+    return removed;
+  }
+  count() {
+    return this.size;
+  }
+  isEmpty() {
+    return this.size === 0;
+  }
+  peek() {
+    if (this.size === 0) {
+      throw new Error("The queue is empty");
+    }
+    return this.first;
+  }
+  getLast() {
+    if (this.size === 0) {
+      throw new Error("The queue is empty");
+    }
+    return this.last;
+  }
+  findMax() {
+    if (this.size === 0) {
+      throw new Error("The queue is empty");
+    }
+    return this.max;
   }
 }
 
