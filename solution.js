@@ -57,54 +57,55 @@ class Stack {
     }
   }
   sort() {
+    
     // working on non array method
-      let current = this.top;
-      const sorted = new Stack();
-      while (current) {
+    //   let current = this.top;
+    //   const sorted = new Stack();
+    //   while (current) {
 
-        if (sorted.isEmpty()) {
-          sorted.top = new Node(current.data);
-        } else {
-          let currentSorted = sorted.top;
-          let added = false;
-          while (currentSorted.next && !added) {
-            console.log(currentSorted.data, current.data)
-            if (currentSorted.data > current.data) {
-              const newNext = currentSorted;
-              currentSorted = new Node(current.data);
-              console.log(newNext)
-              currentSorted.next = newNext;
-              added = true;
-            }
-            currentSorted = currentSorted.next;
-          }
-          if (!added) {
-            currentSorted.next = new Node(current.data);
-          }
-        }
-        current = current.next;
-      }
-      return sorted;
-    }
+    //     if (sorted.isEmpty()) {
+    //       sorted.top = new Node(current.data);
+    //     } else {
+    //       let currentSorted = sorted.top;
+    //       let added = false;
+    //       while (currentSorted.next && !added) {
+    //         console.log(currentSorted.data, current.data)
+    //         if (currentSorted.data > current.data) {
+    //           const newNext = {...currentSorted};
+    //           currentSorted = new Node(current.data);
+    //           console.log(newNext)
+    //           currentSorted.next = newNext;
+    //           added = true;
+    //         }
+    //         currentSorted = currentSorted.next;
+    //       }
+    //       if (!added) {
+    //         currentSorted.next = new Node(current.data);
+    //       }
+    //     }
+    //     current = current.next;
+    //   }
+    //   return sorted;
 
     // method using an array
-    // if (this.top === null) {
-    //   throw new Error("The stack is empty");
-    // }
-    // const arr = [];
-    // let current = this.top;
-    // while (current) {
-    //   arr.push(current.data);
-    //   current = current.next;
-    // }
-    // arr.sort();
-    // console.log(arr)
-    // let sorted = new Stack()
-    // for(let item of arr){
-    //   sorted.push(item)
-    // }
-    // return sorted;
-  // }
+  //   if (this.top === null) {
+  //     throw new Error("The stack is empty");
+  //   }
+  //   const arr = [];
+  //   let current = this.top;
+  //   while (current) {
+  //     arr.push(current.data);
+  //     current = current.next;
+  //   }
+  //   console.log(arr)
+  //   arr.sort((a, b) => b-a);
+  //   console.log(arr)
+  //   let sorted = new Stack()
+  //   for(let item of arr){
+  //     sorted.push(item)
+  //   }
+  //   this.top = {...sorted};
+  }
 }
 
 class Queue {
@@ -185,9 +186,9 @@ for (let num of [10, 9, 8, 6, 7, 5, 4, 3]) {
 // console.log(wordStack2);
 // console.log(numStack2);
 // console.log(wordStack2.sort());
-
+// numStack2.sort()
 console.log(
-  inspect(numStack2.sort(), { showHidden: true, colors: true, depth: 12 })
+  inspect(wordStack2, { showHidden: true, colors: true, depth: 12 })
 );
 // console.log(numStack2.sort());
 
