@@ -66,36 +66,24 @@ class Stack {
   }
 
   sort() {
-    const sortedStack = {
-      top: null,
-      isEmpty() {
-        return this.top === null;
-      },
-      push(data) {
-        this.top = { data, next: this.top };
-      },
-      pop() {
-        const top = this.top;
-        this.top = top.next;
-        return top.data;
-      },
-      peek() {
-        return this.top.data;
-      },
-    };
+    const newStack = new Stack();
+    let temp;
 
     while (!this.isEmpty()) {
-      const current = this.pop();
-      while (!sortedStack.isEmpty() && sortedStack.peek() > current) {
-        this.push(sortedStack.pop());
+      temp = this.pop();
+
+      while (!newStack.isEmpty() && newStack.peek().data > temp.data) {
+        this.push(newStack.pop().data);
       }
-      sortedStack.push(current);
+
+      newStack.push(temp.data);
     }
 
-    this.top = sortedStack.top;
+    while (!newStack.isEmpty()) {
+      this.push(newStack.pop().data);
+    }
   }
 }
-
 class Queue {
   constructor() {
     this.first = null;
