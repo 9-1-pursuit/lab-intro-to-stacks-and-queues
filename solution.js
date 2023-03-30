@@ -10,10 +10,29 @@ class Node {
 class Stack {
   constructor(top = null) {
     this.top = top; // head
-    this.size = 0;
+
   }
+  push(data) {
+    const newItem = new Node(data);
+    newItem.next = this.top;
+    this.top = newItem;
+   
+  }
+  size() {
+    let count = 0;
+    let node = this.top;
+    while (node.next) {
+      count++;
+      node = node.next;
+    }
+    return count;
+  }
+  
 }
- 
+
+class Queue {
+  constructor(){}
+}
 
 module.exports = {
   Node,
