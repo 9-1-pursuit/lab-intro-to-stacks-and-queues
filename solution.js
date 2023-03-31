@@ -57,17 +57,25 @@ class Stack {
     }
   }
   sort() {
-    // was stuck on this for a while. Gave in and looked up the method/idea behind doing this
+    // was stuck on this for a while. Gave in and looked up the method/idea behind doing this. I now undenstand it and coded out a solution
+
+    // create a temp stack for sorting
     let tempStack = new Stack();
+    // pop first item of our stack and push it to temp stack
     tempStack.push(this.pop().data);
 
-    while (this.top) {
+    // loop while our stack.top is non null value
+    while (this.top !== null) {
+      // pop top of stack
       const popped = this.pop().data;
+      // if popped value is larger than temp stack.top then pop top of temp stack and push it to stack
       if (tempStack.top.data < popped) {
         this.push(tempStack.pop().data);
       }
+      // push popped value on temp stack
       tempStack.push(popped);
     }
+    // set stack.top to equal tempStack.top
     this.top = tempStack.top;
   }
 }
@@ -137,12 +145,7 @@ class Queue {
   }
 }
 
-let wordStack2, numStack2;
-// wordStack2 = new Stack();
-// for (let word of words) {
-//   wordStack2.push(word);
-// }
-numStack2 = new Stack();
+let numStack2 = new Stack();
 for (let num of [2, 3, 1, 4]) {
   numStack2.push(num);
 }
