@@ -57,54 +57,18 @@ class Stack {
     }
   }
   sort() {
-    
-    // working on non array method
-    //   let current = this.top;
-    //   const sorted = new Stack();
-    //   while (current) {
+    // was stuck on this for a while. Gave in and looked up the method/idea behind doing this
+    let tempStack = new Stack();
+    tempStack.push(this.pop().data);
 
-    //     if (sorted.isEmpty()) {
-    //       sorted.top = new Node(current.data);
-    //     } else {
-    //       let currentSorted = sorted.top;
-    //       let added = false;
-    //       while (currentSorted.next && !added) {
-    //         console.log(currentSorted.data, current.data)
-    //         if (currentSorted.data > current.data) {
-    //           const newNext = {...currentSorted};
-    //           currentSorted = new Node(current.data);
-    //           console.log(newNext)
-    //           currentSorted.next = newNext;
-    //           added = true;
-    //         }
-    //         currentSorted = currentSorted.next;
-    //       }
-    //       if (!added) {
-    //         currentSorted.next = new Node(current.data);
-    //       }
-    //     }
-    //     current = current.next;
-    //   }
-    //   return sorted;
-
-    // method using an array
-  //   if (this.top === null) {
-  //     throw new Error("The stack is empty");
-  //   }
-  //   const arr = [];
-  //   let current = this.top;
-  //   while (current) {
-  //     arr.push(current.data);
-  //     current = current.next;
-  //   }
-  //   console.log(arr)
-  //   arr.sort((a, b) => b-a);
-  //   console.log(arr)
-  //   let sorted = new Stack()
-  //   for(let item of arr){
-  //     sorted.push(item)
-  //   }
-  //   this.top = {...sorted};
+    while (this.top) {
+      const popped = this.pop().data;
+      if (tempStack.top.data < popped) {
+        this.push(tempStack.pop().data);
+      }
+      tempStack.push(popped);
+    }
+    this.top = tempStack.top;
   }
 }
 
@@ -174,23 +138,20 @@ class Queue {
 }
 
 let wordStack2, numStack2;
-wordStack2 = new Stack();
-for (let word of words) {
-  wordStack2.push(word);
-}
+// wordStack2 = new Stack();
+// for (let word of words) {
+//   wordStack2.push(word);
+// }
 numStack2 = new Stack();
-for (let num of [10, 9, 8, 6, 7, 5, 4, 3]) {
+for (let num of [2, 3, 1, 4]) {
   numStack2.push(num);
 }
 
-// console.log(wordStack2);
-// console.log(numStack2);
-// console.log(wordStack2.sort());
-// numStack2.sort()
-console.log(
-  inspect(wordStack2, { showHidden: true, colors: true, depth: 12 })
-);
-// console.log(numStack2.sort());
+console.log(inspect(numStack2, { showHidden: true, colors: true, depth: 12 }));
+
+numStack2.sort();
+
+console.log(inspect(numStack2, { showHidden: true, colors: true, depth: 12 }));
 
 module.exports = {
   Node,
