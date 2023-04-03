@@ -61,6 +61,36 @@ class Stack {
     }
     return min
   }
+
+  // sort method sorts the stack in ascending order with the smallest value first
+  sort(){
+    let arr = []
+
+    // start from this.top
+    let current = this.top
+    
+    // loop through stack and push values to array
+    while(current){
+      arr.push(current.data)
+      current = current.next
+    }
+    
+    // sort array
+    arr.sort().reverse()
+
+    // push values onto stsck in sorted order
+    arr.forEach((val) =>   {
+      this.push(val)
+    })
+
+    // while(current){
+    //   let next = current.next
+    //   if(current.data > next.data){
+    //     current.next = current
+    //     current = next
+    //   }
+    // }
+  }
 }
 
 class Queue {
