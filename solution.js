@@ -172,22 +172,26 @@ class Queue {
       }
       current = current.next
     }
+    // update and return this.max
     this.max = max
     return this.max
   }
+
+  // getLast returns the last item in the queue
+  getLast(){
+    return this.last
+  }
+
+  // isEmpty checks if the queue is empty and returns a boolean
+  isEmpty(){
+    return !this.first
+  }
+
+  // peek returns the first node
+  peek(){
+    return this.first
+  }
 }
-
-
-const queue = new Queue
-queue.enqueue('a')
-queue.enqueue('b')
-queue.enqueue('c')
-queue.dequeue()
-
-// console.log(queue.dequeue())
-// console.log(queue.count())
-console.log(inspect(queue, {showHidden: true, depth: 4}))
-
 
 module.exports = {
   Node,
