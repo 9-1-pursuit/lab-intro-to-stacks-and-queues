@@ -1,6 +1,7 @@
 const { nums, words } = require("./data/data.js");
 const { inspect } = require("util");
 
+// class constructor for Node
 class Node {
   constructor(data){
     this.data = data
@@ -8,6 +9,7 @@ class Node {
   }
 }
 
+// class constructor for Stack
 class Stack {
   constructor(top = null){
     this.top = top
@@ -93,13 +95,81 @@ class Stack {
   }
 }
 
+// class constructor for Queue
 class Queue {
   constructor(){
     this.first = null
     this.last = null
     this.size = 0
+    this.max = null
+  }
+
+  // count takes in a count of items in the queue
+  count(){
+    // start at first item and counting from 0
+    let size = 0
+    let current = this.first
+    
+    // loop through queue incrementing size for each iteration
+    while(current){
+      size++
+      current = current.next
+    }
+    // update this.size and return the count
+    this.size = size
+    return this.size
+  }
+
+  // enqueue adds an item to the queue
+  enqueue(data){
+    // create a new Node
+    const newItem = new Node(data)
+
+    // if this.first does not exist, add newItem to the queue as the first and last item
+    if(!this.first){
+      this.first = newItem
+      this.last = newItem
+    // otherwise the previous this.last points to the newItem and newItem is now this.last
+    } else {
+      this.last.next = newItem
+      this.last = newItem
+    }
+    // increment size to update
+    this.size++
+  }
+
+  // dequeue removes an item from the queue
+  dequeue(){
+    // store data from this.first
+    let removed = this.first
+    // if there is none or only one item in the queue, remove and return null for this.first and this.last
+    if(this.first === this.last){
+      this.first = null
+      this.last = null
+    // otherwise the previous this.first.next becomes the new this.first
+    } else {
+      this.first = removed.next
+    }
+    // update size
+    this.count()
+    // return removed data
+    return removed.data
   }
 }
+
+// const a = new Node('a')
+// const b = new Node('b')
+// const c = new Node('c')
+const queue = new Queue
+queue.enqueue('a')
+queue.enqueue('b')
+queue.enqueue('c')
+queue.dequeue()
+
+// console.log(queue.dequeue())
+// console.log(queue.count())
+console.log(inspect(queue, {showHidden: true, depth: 4}))
+
 
 module.exports = {
   Node,
