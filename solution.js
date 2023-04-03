@@ -43,6 +43,13 @@ class Stack {
   isEmpty(){
     return this.top ? false : true
   }
+
+  // peek returns the top item
+  peek(){
+    return this.top
+  }
+
+  // findMin returns the smallest value
 }
 
 class Queue {
