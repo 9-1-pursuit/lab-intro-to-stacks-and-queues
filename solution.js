@@ -50,6 +50,17 @@ class Stack {
   }
 
   // findMin returns the smallest value
+  findMin(){
+    let current = this.top
+    let min = current.data
+    while(current){
+      if(current.data < min){
+        min = current.data
+      }
+      current = current.next
+    }
+    return min
+  }
 }
 
 class Queue {
