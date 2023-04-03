@@ -134,14 +134,16 @@ class Queue {
       this.last.next = newItem
       this.last = newItem
     }
-    // increment size to update
-    this.size++
+    // update size and max
+    this.count()
+    this.findMax()
   }
 
-  // dequeue removes an item from the queue
+  // dequeue removes this first item from the queue
   dequeue(){
     // store data from this.first
     let removed = this.first
+
     // if there is none or only one item in the queue, remove and return null for this.first and this.last
     if(this.first === this.last){
       this.first = null
@@ -150,16 +152,32 @@ class Queue {
     } else {
       this.first = removed.next
     }
-    // update size
+    // update size and max
     this.count()
+    this.findMax()
     // return removed data
     return removed.data
   }
+
+  // findMax returns the maximum data value
+  findMax(){
+    // start from this.first and store the first item's data as the current max
+    let current = this.first
+    let max = current.data
+
+    // while current exists, compare data values and update max if current value is greater than the current max
+    while(current){
+      if(current.data > max){
+        max = current.data
+      }
+      current = current.next
+    }
+    this.max = max
+    return this.max
+  }
 }
 
-// const a = new Node('a')
-// const b = new Node('b')
-// const c = new Node('c')
+
 const queue = new Queue
 queue.enqueue('a')
 queue.enqueue('b')
