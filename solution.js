@@ -53,6 +53,18 @@ class Queue {
   count() {
     return this.size;
   }
+  findMax() {
+    let item = this.first;
+    let max = item.data;
+
+    while (item) {
+      if (item.data > max) {
+        max = item.data;
+      }
+      item = item.next;
+    }
+    return max;
+  }
 }
 
 class Stack {
@@ -91,6 +103,18 @@ class Stack {
 
       return item;
     }
+  }
+  findMin() {
+    let item = this.top;
+    let min = item.data;
+
+    while (item) {
+      if (item.data < min) {
+        min = item.data;
+      }
+      item = item.next;
+    }
+    return min;
   }
 }
 
