@@ -60,12 +60,11 @@ class Stack {
     return min
   }
 
-  sortStack(data) {
-    let sorted = []
-    let cur = this.top
+  sort() {
+    let curr = this.top
     while (cur) {
       sorted.push(cur.data)
-      cur = cur.next
+      curr = curr.next
     }
     let sortedStack = new Stack()
     for (let i = 0; i < sorted.length; i++) {
